@@ -1,0 +1,36 @@
+.movesTable {
+    /* width: 250px; */
+    /* background-color: aqua; */
+    height: 320px;
+    /* margin-right: 20px; */
+    border-color: black;
+    /* background-color: red; */
+}
+
+.movesTable table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.movesTable th, .movesTable td {
+  border: 1px solid #ddd;
+  padding: 1px;
+  text-align: center;
+}
+
+.movesTable th {
+  background-color: #f2f2f2;
+}
+
+.movesTable .tableContainer {
+  max-height: 325px;
+  overflow-y: auto;
+  /* Container fits table width exactly */
+}
+
+.movesTable .tableContainer thead {
+  position: sticky;
+  top: 0;
+  background-color: #f2f2f2;
+  z-index: 1;
+}

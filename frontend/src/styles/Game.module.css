@@ -1,0 +1,115 @@
+.chessPage {
+  /* background-color: blue; */
+  display: flex;
+  margin-top: 40px;
+  /* align-items: flex-start; */
+  justify-content: center;
+}
+
+.left {
+
+  width: 300px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-right: 1px solid #ddd;
+  flex: 25%;
+}
+
+.right {
+    /* background-color: green; */
+
+    flex: 25%;
+    margin-right: 20px;
+}
+.middle{
+  /* background-color: red; */
+    flex: 40%;
+}
+
+
+
+
+
+
+.container{
+    display: flex;
+    align-items: center;
+    
+    padding-left: 15px;
+}
+.boardwithlabels{
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: center;
+}
+.cell {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.top{
+    display: flex;
+}
+.bottom{
+    display: flex;
+}
+.cell.selected {
+    border: 3px solid #3F89FF;
+}
+
+.cell.light {
+    background-color: #ebecd0;
+}
+
+.cell.dark {
+    background-color: #A45016;
+}
+
+.pieceImg {
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+}
+.board{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    row-gap: 0px;
+    column-gap: 0px;
+    border: 2px solid;
+}
+
+
+.rankLabels {
+  display: flex;
+  flex-direction: column;
+  margin-right: 5px;
+}
+
+.rankLabel {
+  height: 70px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.fileLabels {
+  display: flex;
+  margin-top: 5px;
+  justify-content: space-around;
+}
+
+.fileLabel {
+  height: 20px;
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  padding-left: 40px;
+}

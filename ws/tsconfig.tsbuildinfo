@@ -1,0 +1,1 @@
+{"root":["./src/chatmanager.ts","./src/gamemanager.ts","./src/games.ts","./src/socketmanager.ts","./src/db.ts","./src/index.ts","./src/messages.ts"],"version":"5.8.2"}

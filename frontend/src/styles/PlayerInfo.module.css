@@ -1,0 +1,111 @@
+/* PlayerInfo.module.css */
+
+.playerInfo {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 16px auto;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 20px 0;
+  text-align: left;
+}
+
+.username {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 8px 0;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.rating {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0 0 20px 0;
+  font-weight: 400;
+  text-align: center;
+}
+
+.statusContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.status {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-align: center;
+  display: inline-block;
+}
+
+.activeTurn {
+  background-color: black;
+  color: white;
+  border: 1px solid #1f2937;
+}
+
+.inactiveTurn {
+  background-color: #f3f4f6;
+  color: #6b7280;
+  border: 1px solid #d1d5db;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .playerInfo {
+    padding: 20px;
+    max-width: 280px;
+  }
+  
+  .username {
+    font-size: 22px;
+  }
+  
+  .label {
+    font-size: 15px;
+  }
+  
+  .rating {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .playerInfo {
+    padding: 16px;
+    margin: 0 auto 12px auto;
+  }
+  
+  .username {
+    font-size: 20px;
+  }
+  
+  .label {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  
+  .rating {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  
+  .status {
+    font-size: 13px;
+    padding: 6px 14px;
+  }
+}
