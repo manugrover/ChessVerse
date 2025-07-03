@@ -94,8 +94,8 @@ import { useNavigate } from 'react-router-dom';
 import {MOVE, INIT_GAME, GAME_OVER, GAME_ADDED, INVALID_MOVE, CHAT_MESSAGE} from '../messages'
 
 const WS_URL = "ws://localhost:8080"; 
-
-import useSocket from '../hooks/useSocket'
+import { useLocation } from 'react-router-dom';
+import {useSocket} from '../hooks/useSocket'
 
 const files = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 const ranks = [8, 7, 6, 5, 4, 3, 2, 1];
@@ -203,7 +203,7 @@ const ChessPage = () => {
         console.log("from is null");
       }
       try {
-          await socket.send( JSON.stringify({
+          socket.send( JSON.stringify({
               type: MOVE,
               payload: {
                 gameId,
@@ -294,7 +294,6 @@ const ChessPage = () => {
     { sender: 'Opponent', message: 'Good luck and have fun!', time: '04:52 PM' }
   ];
 
-  const location = useLocation();
 
   // if(!started){
   //   return <div>........conneccting </div>

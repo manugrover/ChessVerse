@@ -2,7 +2,7 @@ import { WebSocketServer } from "ws";
 import { GameManager} from "./Gamemanager";
 import { User } from "./SocketManager";
 
-const wss = new WebSocketServer({port: 8080});
+const wss = new WebSocketServer({port: 8081});
 
 const gameManager = new GameManager();
 const users = ['1', '2'];

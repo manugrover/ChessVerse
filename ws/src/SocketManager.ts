@@ -36,6 +36,7 @@ class SocketManager {
     addUser(roomId: string, user1: User | null, user2: User | null){
         if(!user1) return;
         if(!user2) return;
+        console.log(`Adding user ${user1.userId} and ${user2.userId} to room ${roomId}`);
         this.rooms.set(roomId, {
             user1, 
             user2,
@@ -45,13 +46,24 @@ class SocketManager {
         this.userRoomMapping.set(user2.userId, roomId);
 
     }
-    sendToOpponent(roomId: string, socket: WebSocket, message: string){
+    sendToOpponent(roomId: string, socket: WebSocket, message: string) {
         const room = this.rooms.get(roomId);
-        const opponentSocket = room?.user1.socket === socket? room.user2.socket: room?.user2.socket;
-
-        opponentSocket?.send(message);
+        if (!room) {
+            console.log(`Room ${roomId} not found`);
+            return;
+        }
+        
+        // Fix the logic to get the correct opponent socket
+        const opponentSocket = room.user1.socket === socket ? room.user2.socket : room.user1.socket;
+        
+        if (opponentSocket && opponentSocket.readyState === WebSocket.OPEN) {
+            opponentSocket.send(message);
+        } else {
+            console.log('Opponent socket not available or closed');
+        }
     }
 
+    
     broadcast(roomId: string, message: string){
         const room = this.rooms.get(roomId);
         if(!room){

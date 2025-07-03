@@ -1,7 +1,6 @@
 /* GameChat.module.css */
 
 .chatContainer {
-  
   background: white;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -11,7 +10,137 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: red;
+  position: relative;
+}
+
+.videoContainer {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: #000;
+  border-radius: 12px 12px 0 0;
+}
+
+.remoteVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #000;
+}
+
+.localVideo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 120px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #333;
+  border: 2px solid #fff;
+}
+
+.callControls {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.endCallButton {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 24px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.endCallButton:hover {
+  background: #b91c1c;
+}
+
+.incomingCallModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  min-width: 300px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modalContent h3 {
+  margin: 0 0 10px 0;
+  color: #111827;
+  font-size: 20px;
+}
+
+.modalContent p {
+  margin: 0 0 20px 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.callModalButtons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.acceptButton {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.acceptButton:hover {
+  background: #059669;
+}
+
+.declineButton {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.declineButton:hover {
+  background: #b91c1c;
+}
+
+.callStatus {
+  background: #f3f4f6;
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .chatHeader {
@@ -35,20 +164,33 @@
   gap: 8px;
 }
 
+.callButtonContainer {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.callButtonContainer:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .callButton {
   width: 40px;
   height: 40px;
   border-radius: 8px;
   border: 1px solid #d1d5db;
   background: white;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
 }
 
-.callButton:hover {
+.callButtonContainer:hover:not(:disabled) .callButton {
   background: #f3f4f6;
   border-color: #9ca3af;
 }
@@ -214,6 +356,15 @@
     height: 400px;
   }
   
+  .videoContainer {
+    height: 200px;
+  }
+  
+  .localVideo {
+    width: 100px;
+    height: 60px;
+  }
+  
   .chatHeader {
     padding: 12px 16px;
   }
@@ -252,6 +403,15 @@
     border-radius: 8px;
   }
   
+  .videoContainer {
+    height: 150px;
+  }
+  
+  .localVideo {
+    width: 80px;
+    height: 50px;
+  }
+  
   .messageBubbleOpponent,
   .messageBubbleOwn {
     max-width: 85%;
@@ -265,5 +425,10 @@
   
   .callIcon {
     font-size: 14px;
+  }
+  
+  .modalContent {
+    margin: 20px;
+    padding: 20px;
   }
 }

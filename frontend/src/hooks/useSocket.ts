@@ -1,6 +1,7 @@
-const WS_URL = "ws://localhost:8080";
+const WS_URL = "ws://localhost:8081";
 import { useState, useEffect } from "react";
-export const useSocket = () => {
+import { INIT_GAME } from "../messages";
+export  const useSocket = () => {
     const [socket, setSocket] = useState<WebSocket | null>(null);
 
     useEffect(()=>{
@@ -8,6 +9,9 @@ export const useSocket = () => {
 
         ws.onopen = () => {
             setSocket(ws);
+            ws?.send(JSON.stringify({
+                type: INIT_GAME
+            }))
         }
 
         ws.onclose = () => {

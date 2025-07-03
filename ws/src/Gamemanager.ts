@@ -92,8 +92,6 @@ import { User, socketManager } from './SocketManager';
 import { SocketAddress } from 'net';
 import { ChatManager } from './ChatManager';
 import {
-    ANSWER, 
-    OFFER,
     GAME_OVER,
     INIT_GAME,
     JOIN_GAME,
@@ -107,15 +105,12 @@ import {
     GAME_ENDED,
     EXIT_GAME,
     CHAT_MESSAGE,
-    VOICE_CALL_OFFER,
-    VOICE_CALL_ANSWER,
-    VOICE_CALL_END,
-    VIDEO_CALL_OFFER,
-    VIDEO_CALL_ANSWER,
-    VIDEO_CALL_END,
-    ICE_CANDIDATE,
-    CALL_DECLINED,
-    CALL_ACCEPTED
+    OFFER,
+    ANSWER,
+    ADDICECANDIDATE,
+    CALL_REQUEST,
+    CALL_RESPONSE,
+    END_CALL,
 } from './messages';
 import { getUniqPayload } from 'recharts/types/util/payload/getUniqPayload';
 
@@ -150,9 +145,6 @@ export class GameManager {
             console.error('User not Found ? ');
             return;
         }
-        
-        // Cleanup user's active calls
-        this.chatManager.cleanupUserCalls(user.userId);
         
         this.users = this.users.filter((user) => user.socket !== socket);
         socketManager.removeUser(user);
@@ -241,11 +233,39 @@ export class GameManager {
             if(message.type === CHAT_MESSAGE){
                 await this.chatManager.handleChatMessage(user, message.payload);
             }
-            if(message.type === OFFER || message.type === ANSWER){
+
+            if (message.type === OFFER || message.type === ANSWER || message.type === ADDICECANDIDATE) {
                 const gameId = message.payload.gameId;
                 const game = this.games.find((game) => game.gameId === gameId);
-                socketManager.sendToOpponent(game?.gameId ?? 'empty', user.socket, JSON.stringify(message));
+                if (game) {
+                    socketManager.sendToOpponent(game.gameId, user.socket, JSON.stringify(message));
+                }
             }
+
+            if (message.type === CALL_REQUEST) {
+                const gameId = message.payload.gameId;
+                const game = this.games.find((game) => game.gameId === gameId);
+                if (game) {
+                    socketManager.sendToOpponent(game.gameId, user.socket, JSON.stringify(message));
+                }
+            }
+
+            if (message.type === CALL_RESPONSE) {
+                const gameId = message.payload.gameId;
+                const game = this.games.find((game) => game.gameId === gameId);
+                if (game) {
+                    socketManager.sendToOpponent(game.gameId, user.socket, JSON.stringify(message));
+                }
+            }
+
+            if (message.type === END_CALL) {
+                const gameId = message.payload.gameId;
+                const game = this.games.find((game) => game.gameId === gameId);
+                if (game) {
+                    socketManager.sendToOpponent(game.gameId, user.socket, JSON.stringify(message));
+                }
+            }
+
         })
     }
 }

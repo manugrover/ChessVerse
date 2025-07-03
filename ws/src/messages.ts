@@ -13,16 +13,11 @@ export const GAME_TIME = 'game_time';
 export const EXIT_GAME = 'exit_game';
 export const INVALID_MOVE = 'invalid_move';
 
-export const CHAT_MESSAGE = 'CHAT_MESSAGE';
-export const ANSWER = 'answer';
-export const OFFER = 'offer';
 
-export const VOICE_CALL_OFFER = 'VOICE_CALL_OFFER';
-export const VOICE_CALL_ANSWER = 'VOICE_CALL_ANSWER';
-export const VOICE_CALL_END = 'VOICE_CALL_END';
-export const VIDEO_CALL_OFFER = 'VIDEO_CALL_OFFER';
-export const VIDEO_CALL_ANSWER = 'VIDEO_CALL_ANSWER';
-export const VIDEO_CALL_END = 'VIDEO_CALL_END';
-export const ICE_CANDIDATE = 'ICE_CANDIDATE';
-export const CALL_DECLINED = 'CALL_DECLINED';
-export const CALL_ACCEPTED = 'CALL_ACCEPTED';
+export const CHAT_MESSAGE = "CHAT_MESSAGE";
+export const OFFER = "OFFER";
+export const ANSWER = "ANSWER";
+export const ADDICECANDIDATE = "ADDICECANDIDATE";
+export const CALL_REQUEST = "CALL_REQUEST";
+export const CALL_RESPONSE = "CALL_RESPONSE";
+export const END_CALL = "END_CALL";
